@@ -14,32 +14,32 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var backgroundImage = {
-	img: img,
-	x: -5,
-	speed: -1,
+  img: img,
+  x: -5,
+  speed: -1,
 
-	move: function() {
-		this.x += this.speed;
-		this.x %= canvas.width;
-	},
+  move: function() {
+    this.x += this.speed;
+    this.x %= canvas.width;
+  },
 
-	draw: function() {
-		ctx.drawImage(this.img, this.x, 0);
-		if (this.speed < 0) {
-			ctx.drawImage(this.img, this.x + canvas.width - 3, 0);
-		} else {
-			ctx.drawImage(this.img, this.x - this.img.width, 0);
-		}
-	}
+  draw: function() {
+    ctx.drawImage(this.img, this.x, 0);
+    if (this.speed < 0) {
+      ctx.drawImage(this.img, this.x + canvas.width - 3, 0);
+    } else {
+      ctx.drawImage(this.img, this.x - this.img.width, 0);
+    }
+  }
 };
 
 function updateCanvas() {
-	backgroundImage.move();
+  backgroundImage.move();
 
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	backgroundImage.draw();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  backgroundImage.draw();
 
-	requestAnimationFrame(updateCanvas);
+  requestAnimationFrame(updateCanvas);
 }
 
 // start calling updateCanvas once the image is loaded
